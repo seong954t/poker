@@ -9,28 +9,20 @@ import java.util.Map;
  */
 public class Evaluator {
     public String evaluate(List<Card> cardList) {
-        Map<Suit, Integer> tempMap = new HashMap<Suit, Integer>();
-
-        for (Card card : cardList) {
-            if (tempMap.containsKey(card.getSuit())) {
-                Integer count = tempMap.get(card.getSuit());
-                count = new Integer(count.intValue() + 1);
-                tempMap.put(card.getSuit(), count);
-            } else {
-                tempMap.put(card.getSuit(), new Integer(1));
-            }
-        }
-
-        for (Suit key : tempMap.keySet()) {
-            if (tempMap.get(key) == 5) {
-                return "FLUSH";
-            }
-        }
-
+        Collections.sort(cardList);
         if (checkfourcard(cardList)) {
             return "FOURCARD";
+        } else if (FLUSH(cardList)) {
+            return "FLUSH";
+        } else if(checkmountain(cardList)){
+            return "MOUNTAIN";
         }
-
+        else if (STRAIGHT(cardList)) {
+            if (cardList.get(0).getRank() == 1) {
+                return "BACKSTRAIGHT";
+            }
+            return "STRAIGHT";
+        }
         return "NOTHING";
     }
 
