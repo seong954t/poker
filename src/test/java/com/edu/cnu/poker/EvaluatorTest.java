@@ -41,6 +41,17 @@ public class EvaluatorTest {
         assertThat(result, is("FOURCARD"));
     }
 
-
-
+    @Test
+    public void 에이스가_14일때_플러쉬는_마운틴이다() {
+        Evaluator evaluator = new Evaluator();
+        List<Card> cardList = Arrays.asList(
+                new Card(1,Suit.CLUBS),
+                new Card(10,Suit.HEARTS),
+                new Card(11,Suit.DIAMONDS),
+                new Card(12,Suit.SPADES),
+                new Card(13,Suit.SPADES)
+        );
+        String result = evaluator.evaluate(cardList);
+        assertThat(result, is("MOUNTIN"));
+    }
 }
