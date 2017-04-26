@@ -37,8 +37,8 @@ public class EvaluatorTest {
                 new Card(10,Suit.SPADES),
                 new Card(8,Suit.SPADES)
         );
-        String result = evaluator.evaluate(cardList);
-        assertThat(result, is("ONEPAIR"));
+        boolean result = evaluator.checkOnepair(cardList);
+        assertThat(result, is(true));
     }
 
 }
