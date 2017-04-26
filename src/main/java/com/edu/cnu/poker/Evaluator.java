@@ -11,28 +11,6 @@ import java.util.Map;
 public class Evaluator {
     public String evaluate(List<Card> cardList) {
 
-        Map<Suit, Integer> tempMap = new HashMap<Suit, Integer>(); // 플러쉬
-        Map<Integer, Integer> numMap = new HashMap<Integer, Integer>(); // 원페어, 투페어, 트리플, 풀하우스
-        Map<Integer, Integer> strMap = new HashMap<Integer, Integer>(); // 스트레이트
-
-
-
-        Integer onetwoApart = 0; // 원페어, 투페어 구분 변수
-
-        Integer straight = 0; // 스트레이트 제어 변수
-        Integer backStraight = 0; // 백스트레이트 제어 변수
-        Integer mountin = 0; // 마운틴 제어 변수
-
-        Integer onePair = 0; // 원페어 제어 변수
-        Integer twoPair = 0; // 투페어 제어 변수
-        Integer triple = 0; // 트리플 제어 변수
-        Integer fourCard = 0; // 포카드 제어 변수
-
-        Integer flush = 0; // 플러쉬 제어 변수
-
-        Collections.sort(cardList); // cardList의 원소를 Rank 값 오름차순으로 정렬
-
-
         if (check_back_straight_flush(cardList)) {
             return "BACKSTRAIGHTFLUSH";
         }
@@ -51,20 +29,11 @@ public class Evaluator {
         Map<Integer, Integer> numMap = new HashMap<Integer, Integer>(); // 원페어, 투페어, 트리플, 풀하우스
         Map<Integer, Integer> strMap = new HashMap<Integer, Integer>(); // 스트레이트
 
-
-
-        Integer onetwoApart = 0; // 원페어, 투페어 구분 변수
-
         Integer straight = 0; // 스트레이트 제어 변수
         Integer backStraight = 0; // 백스트레이트 제어 변수
         Integer mountin = 0; // 마운틴 제어 변수
+        Integer flush =0;
 
-        Integer onePair = 0; // 원페어 제어 변수
-        Integer twoPair = 0; // 투페어 제어 변수
-        Integer triple = 0; // 트리플 제어 변수
-        Integer fourCard = 0; // 포카드 제어 변수
-
-        Integer flush = 0; // 플러쉬 제어 변수
 
         Collections.sort(cardList); // cardList의 원소를 Rank 값 오름차순으로 정렬
 
@@ -129,19 +98,8 @@ public class Evaluator {
         Map<Integer, Integer> numMap = new HashMap<Integer, Integer>(); // 원페어, 투페어, 트리플, 풀하우스
         Map<Integer, Integer> strMap = new HashMap<Integer, Integer>(); // 스트레이트
 
-
-
-        Integer onetwoApart = 0; // 원페어, 투페어 구분 변수
-
         Integer straight = 0; // 스트레이트 제어 변수
         Integer backStraight = 0; // 백스트레이트 제어 변수
-        Integer mountin = 0; // 마운틴 제어 변수
-
-        Integer onePair = 0; // 원페어 제어 변수
-        Integer twoPair = 0; // 투페어 제어 변수
-        Integer triple = 0; // 트리플 제어 변수
-        Integer fourCard = 0; // 포카드 제어 변수
-
         Integer flush = 0; // 플러쉬 제어 변수
 
         Collections.sort(cardList); // cardList의 원소를 Rank 값 오름차순으로 정렬
@@ -172,7 +130,6 @@ public class Evaluator {
             if(cardList.get(ind).getRank() == 1) {
                 if(ind == 0) {
                     if(cardList.get(4).getRank() == 13) {
-                        mountin += 1;
                         strMap.put(14, -1);
                     } else if (cardList.get(4).getRank() == 5) {
                         backStraight += 1;
@@ -205,19 +162,7 @@ public class Evaluator {
         Map<Integer, Integer> numMap = new HashMap<Integer, Integer>(); // 원페어, 투페어, 트리플, 풀하우스
         Map<Integer, Integer> strMap = new HashMap<Integer, Integer>(); // 스트레이트
 
-
-
-        Integer onetwoApart = 0; // 원페어, 투페어 구분 변수
-
         Integer straight = 0; // 스트레이트 제어 변수
-        Integer backStraight = 0; // 백스트레이트 제어 변수
-        Integer mountin = 0; // 마운틴 제어 변수
-
-        Integer onePair = 0; // 원페어 제어 변수
-        Integer twoPair = 0; // 투페어 제어 변수
-        Integer triple = 0; // 트리플 제어 변수
-        Integer fourCard = 0; // 포카드 제어 변수
-
         Integer flush = 0; // 플러쉬 제어 변수
 
         Collections.sort(cardList); // cardList의 원소를 Rank 값 오름차순으로 정렬
