@@ -1,5 +1,6 @@
 package com.edu.cnu.poker;
 
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -26,24 +27,21 @@ public class Evaluator {
         return "NOTHING";
     }
 
-    public boolean checkfourcard(List<Card> cardList) {
-        Map<Integer, Integer> numMap = new HashMap<Integer, Integer>();
+    public boolean STRAIGHT(List<Card> cardList) {
+        int straight = 0;
+        int saveRank = cardList.get(0).getRank() - 1;
         for (Card card : cardList) {
-            if (numMap.containsKey(card.getRank())) {
-                Integer count = numMap.get(card.getRank());
-                count = new Integer(count.intValue() + 1);
-                numMap.put(card.getRank(), count);
-            } else {
-                numMap.put(card.getRank(), new Integer(1));
+            if (saveRank+1 == card.getRank()) {
+                straight++;
             }
+            saveRank = card.getRank();
         }
-        for (Integer key : numMap.keySet()) {
-            if (numMap.get(key) == 4) {
-                return true;
-            }
+        if(straight >= 5){
+            return true;
         }
         return false;
     }
+
 }
 
 
