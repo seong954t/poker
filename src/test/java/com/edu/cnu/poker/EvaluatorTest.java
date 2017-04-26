@@ -126,6 +126,22 @@ public class EvaluatorTest {
         String result = evaluator.evaluate(cardList);
         assertThat(result, is("ROYALSTRAIGHTFLUSH"));
     }
+   
+    @Test
+    public void 세븐포커_스트레이트플러쉬_모양이_같으면_로얄스트레이트플러쉬이다() {
+        Evaluator evaluator = new Evaluator();
+        List<Card> cardList = Arrays.asList(
+                new Card(1, Suit.DIAMONDS),
+                new Card(13, Suit.DIAMONDS),
+                new Card(12, Suit.DIAMONDS),
+                new Card(11, Suit.DIAMONDS),
+                new Card(10, Suit.DIAMONDS),
+                new Card(9, Suit.DIAMONDS),
+                new Card(8, Suit.DIAMONDS)
+        );
+        String result = evaluator.evaluate(cardList);
+        assertThat(result, is("ROYALSTRAIGHTFLUSH"));
+    }
 
     @Test
     public void 스트레이트_모양이_같으면_스트레이트플러쉬이다() {
@@ -140,6 +156,22 @@ public class EvaluatorTest {
         String result = evaluator.evaluate(cardList);
         assertThat(result, is("STRAIGHTFLUSH"));
     }
+  
+    @Test
+    public void 세븐포커_스트레이트_모양이_같으면_스트레이트플러쉬이다() {
+        Evaluator evaluator = new Evaluator();
+        List<Card> cardList = Arrays.asList(
+                new Card(7, Suit.SPADES),
+                new Card(8, Suit.SPADES),
+                new Card(9, Suit.SPADES),
+                new Card(10, Suit.SPADES),
+                new Card(11, Suit.SPADES),
+                new Card(6, Suit.DIAMONDS),
+                new Card(2, Suit.HEARTS)
+        );
+        String result = evaluator.evaluate(cardList);
+        assertThat(result, is("STRAIGHTFLUSH"));
+    }
 
     @Test
     public void 백스트레이트_모양이_같으면_백스트레이트플러쉬이다() {
@@ -150,6 +182,22 @@ public class EvaluatorTest {
                 new Card(1, Suit.CLUBS),
                 new Card(4, Suit.CLUBS),
                 new Card(2, Suit.CLUBS)
+        );
+        String result = evaluator.evaluate(cardList);
+        assertThat(result, is("BACKSTRAIGHTFLUSH"));
+    }
+  
+    @Test
+    public void 세븐포커_백스트레이트_모양이_같으면_백스트레이트플러쉬이다() {
+        Evaluator evaluator = new Evaluator();
+        List<Card> cardList = Arrays.asList(
+                new Card(5, Suit.CLUBS),
+                new Card(3, Suit.CLUBS),
+                new Card(1, Suit.CLUBS),
+                new Card(4, Suit.CLUBS),
+                new Card(2, Suit.CLUBS),
+                new Card(7, Suit.DIAMONDS),
+                new Card(9, Suit.HEARTS)
         );
         String result = evaluator.evaluate(cardList);
         assertThat(result, is("BACKSTRAIGHTFLUSH"));
