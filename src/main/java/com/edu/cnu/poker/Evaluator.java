@@ -81,6 +81,10 @@ public class Evaluator {
         return false;
     }
 
+    public boolean checkTriple(List<Card> cardList) {
+        return false;
+    }
+
 }
 
 
