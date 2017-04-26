@@ -42,7 +42,7 @@ public class EvaluatorTest {
     }
 
     @Test
-    public void 에이스가_14일때_플러쉬는_마운틴이다() {
+    public void 시작이_10인_플러쉬는_마운틴이다() {
         Evaluator evaluator = new Evaluator();
         List<Card> cardList = Arrays.asList(
                 new Card(1,Suit.CLUBS),
