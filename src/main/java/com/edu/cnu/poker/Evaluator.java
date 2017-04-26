@@ -60,7 +60,25 @@ public class Evaluator {
         }
         return false;
     }
-    
+    public boolean checkfourcard(List<Card> cardList) {
+        Map<Integer, Integer> numMap = new HashMap<Integer, Integer>();
+        for (Card card : cardList) {
+            if (numMap.containsKey(card.getRank())) {
+                Integer count = numMap.get(card.getRank());
+                count = new Integer(count.intValue() + 1);
+                numMap.put(card.getRank(), count);
+            } else {
+                numMap.put(card.getRank(), new Integer(1));
+            }
+        }
+        for (Integer key : numMap.keySet()) {
+            if (numMap.get(key) >= 4) {
+                return true;
+            }
+        }
+        return false;
+    }
+
 }
 
 
