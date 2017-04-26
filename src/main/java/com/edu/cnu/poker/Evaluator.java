@@ -11,7 +11,6 @@ public class Evaluator {
     public String evaluate(List<Card> cardList) {
 
         Map<Suit, Integer> tempMap = new HashMap<Suit, Integer>();
-        Map<Integer, Integer> numMap = new HashMap<Integer, Integer>(); // 원페어는 숫자가 같아야 하므로 새로운 map 생성
 
         for (Card card : cardList) {
             if (tempMap.containsKey(card.getSuit())) {
@@ -21,15 +20,6 @@ public class Evaluator {
             } else {
                 tempMap.put(card.getSuit(), new Integer(1));
             }
-
-            // 각 card의 rank 값을 비교하여 같은 rank가 몇 번씩 나오는지 count해서 numMap에 rank와 count 저장
-            if (numMap.containsKey(card.getRank())) {
-                Integer count = numMap.get(card.getRank());
-                count = new Integer(count.intValue() + 1);
-                numMap.put(card.getRank(), count);
-            } else {
-                numMap.put(card.getRank(), new Integer(1));
-            }
         }
 
         for (Suit key : tempMap.keySet()) {
@@ -38,16 +28,31 @@ public class Evaluator {
             }
         }
 
-        for (Integer num : numMap.keySet()) {
-            if (numMap.get(num) == 2 ) {
-                return "ONEPAIR";
-            }
-        }
-
-
-
-
-
         return "NOTHING";
     }
+
+    public boolean checkOnepair(List<Card> cardList) {
+
+        Map<Integer, Integer> numMap = new HashMap<Integer, Integer>(); // 원페어는 숫자가 같아야 하므로 새로운 map 생성
+
+        // 각 card의 rank 값을 비교하여 같은 rank가 몇 번씩 나오는지 count해서 numMap에 rank와 count 저장
+        for (Card card : cardList) {
+            if (numMap.containsKey(card.getRank())) {
+                Integer count = numMap.get(card.getRank());
+                count = new Integer(count.intValue() + 1);
+                numMap.put(card.getRank(), count);
+            } else {
+                numMap.put(card.getRank(), new Integer(1));
+            }
+        }
+        for (Integer num : numMap.keySet()) {
+            if (numMap.get(num) == 2) {
+                return true;
+            }
+        }
+        return false;
+    }
+
 }
+
+
