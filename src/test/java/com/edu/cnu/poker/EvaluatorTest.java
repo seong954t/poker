@@ -136,8 +136,8 @@ public class EvaluatorTest {
                 new Card(4,Suit.CLUBS),
                 new Card(2,Suit.CLUBS)
         );
-        String result = evaluator.evaluate(cardList);
-        assertThat(result, is("BACKSTRAIGHTFLUSH"));
+        boolean result = evaluator.check_back_straight_flush(cardList);
+        assertThat(result, is(true));
     }
 
     @Test
@@ -150,8 +150,8 @@ public class EvaluatorTest {
                 new Card(10,Suit.SPADES),
                 new Card(11,Suit.SPADES)
         );
-        String result = evaluator.evaluate(cardList);
-        assertThat(result, is("STRAIGHTFLUSH"));
+        Boolean result = evaluator.check_straight_flush(cardList);
+        assertThat(result, is(true));
     }
 
     @Test
@@ -178,8 +178,8 @@ public class EvaluatorTest {
                 new Card(11,Suit.DIAMONDS),
                 new Card(10,Suit.DIAMONDS)
         );
-        String result = evaluator.evaluate(cardList);
-        assertThat(result, is("ROYALSTRAIGHTFLUSH"));
+        Boolean result = evaluator.check_royal_straight_flush(cardList);
+        assertThat(result, is(true));
     }
 
 }
