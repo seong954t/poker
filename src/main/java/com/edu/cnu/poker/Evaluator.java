@@ -82,6 +82,22 @@ public class Evaluator {
     }
 
     public boolean checkTriple(List<Card> cardList) {
+
+        for (Card card : cardList) {
+            if (numMap.containsKey(card.getRank())) {
+                Integer count = numMap.get(card.getRank());
+                count = new Integer(count.intValue() + 1);
+                numMap.put(card.getRank(), count);
+            } else {
+                numMap.put(card.getRank(), new Integer(1));
+            }
+        }
+
+        for(Integer num : numMap.keySet()) {
+            if(numMap.get(num) == 3) {
+                return true;
+            }
+        }
         return false;
     }
 

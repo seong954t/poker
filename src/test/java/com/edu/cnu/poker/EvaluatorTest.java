@@ -59,9 +59,9 @@ public class EvaluatorTest {
     public void 같은_숫자가_3장이면_트리플이다() {
         Evaluator evaluator = new Evaluator();
         List<Card> cardList = Arrays.asList(
-                new Card(1,Suit.CLUBS),
+                new Card(3,Suit.CLUBS),
                 new Card(2,Suit.HEARTS),
-                new Card(3,Suit.DIAMONDS),
+                new Card(7,Suit.DIAMONDS),
                 new Card(3,Suit.SPADES),
                 new Card(3,Suit.SPADES)
         );
