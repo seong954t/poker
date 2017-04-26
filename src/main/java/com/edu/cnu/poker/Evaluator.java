@@ -13,7 +13,7 @@ public class Evaluator {
         Collections.sort(cardList);
         if (FLUSH(cardList) && checkmountain(cardList)) {
             return "ROYALSTRAIGHTFLUSH";
-        } else if (FLUSH(cardList) && cardList.get(0).getRank() == 1 && STRAIGHT(cardList)) {
+        } else if (FLUSH(cardList) && checkbackstraight(cardList) && STRAIGHT(cardList)) {
             return "BACKSTRAIGHTFLUSH";
         } else if (STRAIGHT(cardList) && FLUSH(cardList)) {
             return "STRAIGHTFLUSH";
@@ -24,7 +24,7 @@ public class Evaluator {
         } else if (FLUSH(cardList)) {
             return "FLUSH";
         } else if (STRAIGHT(cardList)) {
-            if (cardList.get(0).getRank() == 1) {
+            if (checkbackstraight(cardList)) {
                 return "BACKSTRAIGHT";
             }
             return "STRAIGHT";
@@ -180,6 +180,9 @@ public class Evaluator {
         return false;
     }
 
+    public boolean checkbackstraight(List<Card> cardList){
+        return cardList.get(0).getRank() == 1 && cardList.get(4).getRank() <= 5;
+    }
 
 }
 

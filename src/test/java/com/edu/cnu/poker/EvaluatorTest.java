@@ -180,4 +180,84 @@ public class EvaluatorTest {
         String result = evaluator.evaluate(cardList);
         assertThat(result, is("FULLHOUSE"));
     }
+
+    @Test
+    public void 세븐포커_처음이_10인_스트레이트_마운틴() {
+        Evaluator evaluator = new Evaluator();
+        List<Card> cardList = Arrays.asList(
+                new Card(1, Suit.CLUBS),
+                new Card(3, Suit.SPADES),
+                new Card(5, Suit.HEARTS),
+                new Card(10, Suit.SPADES),
+                new Card(11, Suit.HEARTS),
+                new Card(12, Suit.DIAMONDS),
+                new Card(13, Suit.HEARTS)
+        );
+        String result = evaluator.evaluate(cardList);
+        assertThat(result, is("MOUNTAIN"));
+    }
+
+    @Test
+    public void 세븐포커_무늬는_다르고_A_부터_5가_연속인_백스트레이트() {
+        Evaluator evaluator = new Evaluator();
+        List<Card> cardList = Arrays.asList(
+                new Card(1, Suit.CLUBS),
+                new Card(2, Suit.HEARTS),
+                new Card(4, Suit.CLUBS),
+                new Card(5, Suit.HEARTS),
+                new Card(6, Suit.DIAMONDS),
+                new Card(7, Suit.SPADES),
+                new Card(3, Suit.CLUBS)
+        );
+        String result = evaluator.evaluate(cardList);
+        assertThat(result, is("BACKSTRAIGHT"));
+    }
+
+    @Test
+    public void 세븐포커_같은_숫자_4장이면_포카드() {
+        Evaluator evaluator = new Evaluator();
+        List<Card> cardList = Arrays.asList(
+                new Card(4, Suit.CLUBS),
+                new Card(4, Suit.SPADES),
+                new Card(4, Suit.HEARTS),
+                new Card(4, Suit.DIAMONDS),
+                new Card(2, Suit.HEARTS),
+                new Card(5, Suit.DIAMONDS),
+                new Card(7, Suit.HEARTS)
+        );
+        String result = evaluator.evaluate(cardList);
+        assertThat(result, is("FOURCARD"));
+    }
+
+    @Test
+    public void 세븐포커_원페어_트리플은_풀하우스이다() {
+        Evaluator evaluator = new Evaluator();
+        List<Card> cardList = Arrays.asList(
+                new Card(5, Suit.CLUBS),
+                new Card(7, Suit.HEARTS),
+                new Card(5, Suit.DIAMONDS),
+                new Card(7, Suit.SPADES),
+                new Card(7, Suit.SPADES),
+                new Card(3, Suit.CLUBS),
+                new Card(1, Suit.HEARTS)
+        );
+        String result = evaluator.evaluate(cardList);
+        assertThat(result, is("FULLHOUSE"));
+    }
+
+    @Test
+    public void 세븐포커_마운틴과_백스트레이트_제외_스트레이트이다() {
+        Evaluator evaluator = new Evaluator();
+        List<Card> cardList = Arrays.asList(
+                new Card(4, Suit.CLUBS),
+                new Card(5, Suit.HEARTS),
+                new Card(6, Suit.SPADES),
+                new Card(7, Suit.CLUBS),
+                new Card(8, Suit.DIAMONDS),
+                new Card(2, Suit.SPADES),
+                new Card(1, Suit.DIAMONDS)
+        );
+        String result = evaluator.evaluate(cardList);
+        assertThat(result, is("STRAIGHT"));
+    }
 }
