@@ -14,7 +14,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 public class EvaluatorTest {
 
 	@Test
-	public void SUIT°¡_5°³°¡µ¿ÀÏÇÏ¸é_ÇÃ·¯½¬´Ù() {
+	public void SUITê°€_5ê°œê°€ë™ì¼í•˜ë©´_í”ŒëŸ¬ì‰¬ë‹¤() {
 		Evaluator evaluator = new Evaluator();
 		List<Card> cardList = Arrays.asList(new Card(1, Suit.CLUBS), new Card(4, Suit.CLUBS), new Card(8, Suit.CLUBS),
 				new Card(13, Suit.CLUBS), new Card(2, Suit.CLUBS));
@@ -23,7 +23,7 @@ public class EvaluatorTest {
 	}
 
 	@Test
-	public void ¹«´Ì´Â_´Ù¸£°í_A_ºÎÅÍ_5°¡_¿¬¼ÓÀÎ_¹é½ºÆ®·¹ÀÌÆ®ÀÌ´Ù() {
+	public void ë¬´ëŠ¬ëŠ”_ë‹¤ë¥´ê³ _A_ë¶€í„°_5ê°€_ì—°ì†ì¸_ë°±ìŠ¤íŠ¸ë ˆì´íŠ¸ì´ë‹¤() {
 		Evaluator evaluator = new Evaluator();
 		List<Card> cardList = Arrays.asList(new Card(1, Suit.CLUBS), new Card(2, Suit.HEARTS),
 				new Card(3, Suit.DIAMONDS), new Card(4, Suit.SPADES), new Card(5, Suit.CLUBS));
@@ -32,11 +32,38 @@ public class EvaluatorTest {
 	}
 
 	@Test
-	public void ¸¶¿îÆ¾°ú_¹é½ºÆ®·¹ÀÌÆ®_Á¦¿Ü_½ºÆ®·¹ÀÌÆ®ÀÌ´Ù() {
+	public void ë§ˆìš´í‹´ê³¼_ë°±ìŠ¤íŠ¸ë ˆì´íŠ¸_ì œì™¸_ìŠ¤íŠ¸ë ˆì´íŠ¸ì´ë‹¤() {
 		Evaluator evaluator = new Evaluator();
 		List<Card> cardList = Arrays.asList(new Card(4, Suit.CLUBS), new Card(5, Suit.HEARTS), new Card(6, Suit.SPADES),
 				new Card(7, Suit.CLUBS), new Card(8, Suit.DIAMONDS));
 		String result = evaluator.evaluate(cardList);
 		assertThat(result, is("STRAIGHT"));
 	}
+    @Test
+    public void SUITê°€_5ê°œê°€ë™ì¼í•˜ë©´_í”ŒëŸ¬ì‰¬ë‹¤() {
+        Evaluator evaluator = new Evaluator();
+        List<Card> cardList = Arrays.asList(
+                new Card(1,Suit.CLUBS),
+                new Card(4,Suit.CLUBS),
+                new Card(8,Suit.CLUBS),
+                new Card(13,Suit.CLUBS),
+                new Card(2,Suit.CLUBS)
+        );
+        String result = evaluator.evaluate(cardList);
+        assertThat(result, is("FLUSH"));
+    }
+
+    @Test
+    public void ê°™ì€_ìˆ«ì_4ì¥ì´ë©´_í¬ì¹´ë“œì´ë‹¤() {
+        Evaluator evaluator = new Evaluator();
+        List<Card> cardList = Arrays.asList(
+                new Card(4,Suit.CLUBS),
+                new Card(4,Suit.SPADES),
+                new Card(4,Suit.HEARTS),
+                new Card(4,Suit.DIAMONDS),
+                new Card(2,Suit.HEARTS)
+        );
+        String result = evaluator.evaluate(cardList);
+        assertThat(result, is("FOURCARD"));
+    }
 }
