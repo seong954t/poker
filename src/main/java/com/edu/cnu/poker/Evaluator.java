@@ -78,7 +78,20 @@ public class Evaluator {
         }
         return false;
     }
-
+    public boolean checkmountain(List<Card> cardList) {
+        int check = 10;
+        if(cardList.get(0).getRank() == 1 & cardList.get(cardList.size()-1).getRank() == 13){
+            for(Card card : cardList){
+                if(card.getRank() == check){
+                    check++;
+                }
+            }
+        }
+        if(check == 14){
+            return true;
+        }
+        return false;
+    }
 }
 
 
