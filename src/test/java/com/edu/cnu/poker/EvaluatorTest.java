@@ -17,11 +17,11 @@ public class EvaluatorTest {
     public void SUIT가_5개가동일하면_플러쉬다() {
         Evaluator evaluator = new Evaluator();
         List<Card> cardList = Arrays.asList(
-                new Card(1,Suit.CLUBS),
-                new Card(4,Suit.CLUBS),
-                new Card(8,Suit.CLUBS),
-                new Card(13,Suit.CLUBS),
-                new Card(2,Suit.CLUBS)
+                new Card(1, Suit.CLUBS),
+                new Card(4, Suit.CLUBS),
+                new Card(8, Suit.CLUBS),
+                new Card(13, Suit.CLUBS),
+                new Card(2, Suit.CLUBS)
         );
         String result = evaluator.evaluate(cardList);
         assertThat(result, is("FLUSH"));
@@ -31,11 +31,11 @@ public class EvaluatorTest {
     public void 같은_숫자_4장이면_포카드이다() {
         Evaluator evaluator = new Evaluator();
         List<Card> cardList = Arrays.asList(
-                new Card(4,Suit.CLUBS),
-                new Card(4,Suit.SPADES),
-                new Card(4,Suit.HEARTS),
-                new Card(4,Suit.DIAMONDS),
-                new Card(2,Suit.HEARTS)
+                new Card(4, Suit.CLUBS),
+                new Card(4, Suit.SPADES),
+                new Card(4, Suit.HEARTS),
+                new Card(4, Suit.DIAMONDS),
+                new Card(2, Suit.HEARTS)
         );
         String result = evaluator.evaluate(cardList);
         assertThat(result, is("FOURCARD"));
@@ -45,11 +45,11 @@ public class EvaluatorTest {
     public void 시작이_10인_플러쉬는_마운틴이다() {
         Evaluator evaluator = new Evaluator();
         List<Card> cardList = Arrays.asList(
-                new Card(1,Suit.CLUBS),
-                new Card(10,Suit.HEARTS),
-                new Card(11,Suit.DIAMONDS),
-                new Card(12,Suit.SPADES),
-                new Card(13,Suit.SPADES)
+                new Card(1, Suit.CLUBS),
+                new Card(10, Suit.HEARTS),
+                new Card(11, Suit.DIAMONDS),
+                new Card(12, Suit.SPADES),
+                new Card(13, Suit.SPADES)
         );
         String result = evaluator.evaluate(cardList);
         assertThat(result, is("MOUNTIN"));
