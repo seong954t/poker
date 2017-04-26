@@ -42,6 +42,25 @@ public class Evaluator {
         return false;
     }
 
+    public boolean FLUSH(List<Card> cardList) {
+        Map<Suit, Integer> numMap = new HashMap<Suit, Integer>();
+        for (Card card : cardList) {
+            if (numMap.containsKey(card.getSuit())) {
+                Integer count = numMap.get(card.getSuit());
+                count = new Integer(count.intValue() + 1);
+                numMap.put(card.getSuit(), count);
+            } else {
+                numMap.put(card.getSuit(), new Integer(1));
+            }
+        }
+        for (Suit key : numMap.keySet()) {
+            if (numMap.get(key) >= 5) {
+                return true;
+            }
+        }
+        return false;
+    }
+    
 }
 
 
