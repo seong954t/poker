@@ -13,17 +13,30 @@ import static org.hamcrest.MatcherAssert.assertThat;
  */
 public class EvaluatorTest {
 
-    @Test
-    public void SUITÍ∞Ä_5Í∞úÍ∞ÄÎèôÏùºÌïòÎ©¥_ÌîåÎü¨Ïâ¨Îã§() {
-        Evaluator evaluator = new Evaluator();
-        List<Card> cardList = Arrays.asList(
-                new Card(1,Suit.CLUBS),
-                new Card(4,Suit.CLUBS),
-                new Card(8,Suit.CLUBS),
-                new Card(13,Suit.CLUBS),
-                new Card(2,Suit.CLUBS)
-        );
-        String result = evaluator.evaluate(cardList);
-        assertThat(result, is("FLUSH"));
-    }
+	@Test
+	public void SUIT∞°_5∞≥∞°µø¿œ«œ∏È_«√∑ØΩ¨¥Ÿ() {
+		Evaluator evaluator = new Evaluator();
+		List<Card> cardList = Arrays.asList(new Card(1, Suit.CLUBS), new Card(4, Suit.CLUBS), new Card(8, Suit.CLUBS),
+				new Card(13, Suit.CLUBS), new Card(2, Suit.CLUBS));
+		String result = evaluator.evaluate(cardList);
+		assertThat(result, is("FLUSH"));
+	}
+
+	@Test
+	public void π´¥Ã¥¬_¥Ÿ∏£∞Ì_A_∫Œ≈Õ_5∞°_ø¨º”¿Œ_πÈΩ∫∆Æ∑π¿Ã∆Æ¿Ã¥Ÿ() {
+		Evaluator evaluator = new Evaluator();
+		List<Card> cardList = Arrays.asList(new Card(1, Suit.CLUBS), new Card(2, Suit.HEARTS),
+				new Card(3, Suit.DIAMONDS), new Card(4, Suit.SPADES), new Card(5, Suit.CLUBS));
+		String result = evaluator.evaluate(cardList);
+		assertThat(result, is("BACKSTRAIGHT"));
+	}
+
+	@Test
+	public void ∏∂øÓ∆æ∞˙_πÈΩ∫∆Æ∑π¿Ã∆Æ_¡¶ø‹_Ω∫∆Æ∑π¿Ã∆Æ¿Ã¥Ÿ() {
+		Evaluator evaluator = new Evaluator();
+		List<Card> cardList = Arrays.asList(new Card(4, Suit.CLUBS), new Card(5, Suit.HEARTS), new Card(6, Suit.SPADES),
+				new Card(7, Suit.CLUBS), new Card(8, Suit.DIAMONDS));
+		String result = evaluator.evaluate(cardList);
+		assertThat(result, is("STRAIGHT"));
+	}
 }
