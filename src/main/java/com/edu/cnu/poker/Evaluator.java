@@ -13,12 +13,14 @@ public class Evaluator {
         Collections.sort(cardList);
         if (FLUSH(cardList) && checkmountain(cardList)) {
             return "ROYALSTRAIGHTFLUSH";
-        } else if (FLUSH(cardList)&& cardList.get(0).getRank() == 1 &&STRAIGHT(cardList)) {
+        } else if (FLUSH(cardList) && cardList.get(0).getRank() == 1 && STRAIGHT(cardList)) {
             return "BACKSTRAIGHTFLUSH";
         } else if (STRAIGHT(cardList) && FLUSH(cardList)) {
             return "STRAIGHTFLUSH";
         } else if (checkfourcard(cardList)) {
             return "FOURCARD";
+        } else if (checkOnepair(cardList) && checkTriple(cardList)) {
+            return "FULLHOUSE";
         } else if (FLUSH(cardList)) {
             return "FLUSH";
         } else if (STRAIGHT(cardList)) {
