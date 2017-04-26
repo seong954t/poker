@@ -26,4 +26,19 @@ public class EvaluatorTest {
         String result = evaluator.evaluate(cardList);
         assertThat(result, is("FLUSH"));
     }
+
+    @Test
+    public void 같은_숫자_2장이_1쌍이면_원페어다() {
+        Evaluator evaluator = new Evaluator();
+        List<Card> cardList = Arrays.asList(
+                new Card(7,Suit.CLUBS),
+                new Card(2,Suit.HEARTS),
+                new Card(8,Suit.DIAMONDS),
+                new Card(10,Suit.SPADES),
+                new Card(8,Suit.SPADES)
+        );
+        String result = evaluator.evaluate(cardList);
+        assertThat(result, is("ONEPAIR"));
+    }
+
 }
