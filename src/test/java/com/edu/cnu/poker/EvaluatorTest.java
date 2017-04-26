@@ -98,6 +98,22 @@ public class EvaluatorTest {
     }
 
     @Test
+    public void 세븐포커_같은_숫자_2장이_1쌍이면_원페어다() {
+        Evaluator evaluator = new Evaluator();
+        List<Card> cardList = Arrays.asList(
+                new Card(7, Suit.CLUBS),
+                new Card(2, Suit.HEARTS),
+                new Card(8, Suit.DIAMONDS),
+                new Card(10, Suit.CLUBS),
+                new Card(11, Suit.SPADES),
+                new Card(2, Suit.DIAMONDS),
+                new Card(5, Suit.SPADES)
+        );
+        String result = evaluator.evaluate(cardList);
+        assertThat(result, is("ONEPAIR"));
+    }
+
+    @Test
     public void 스트레이트플러쉬_모양이_같으면_로얄스트레이트플러쉬이다() {
         Evaluator evaluator = new Evaluator();
         List<Card> cardList = Arrays.asList(
@@ -154,6 +170,22 @@ public class EvaluatorTest {
     }
 
     @Test
+    public void 세븐포커_같은_숫자_2장이_2쌍이면_투페어다() {
+        Evaluator evaluator = new Evaluator();
+        List<Card> cardList = Arrays.asList(
+                new Card(4, Suit.CLUBS),
+                new Card(11, Suit.HEARTS),
+                new Card(10, Suit.DIAMONDS),
+                new Card(4, Suit.DIAMONDS),
+                new Card(2, Suit.DIAMONDS),
+                new Card(3, Suit.SPADES),
+                new Card(3, Suit.HEARTS)
+        );
+        String result = evaluator.evaluate(cardList);
+        assertThat(result, is("TWOPAIR"));
+    }
+
+    @Test
     public void 같은_숫자가_3장이면_트리플이다() {
         Evaluator evaluator = new Evaluator();
         List<Card> cardList = Arrays.asList(
@@ -162,6 +194,22 @@ public class EvaluatorTest {
                 new Card(7, Suit.DIAMONDS),
                 new Card(3, Suit.SPADES),
                 new Card(3, Suit.SPADES)
+        );
+        String result = evaluator.evaluate(cardList);
+        assertThat(result, is("TRIPLE"));
+    }
+
+    @Test
+    public void 세븐포커_같은_숫자가_3장이면_트리플이다() {
+        Evaluator evaluator = new Evaluator();
+        List<Card> cardList = Arrays.asList(
+                new Card(3, Suit.CLUBS),
+                new Card(2, Suit.HEARTS),
+                new Card(7, Suit.DIAMONDS),
+                new Card(7, Suit.SPADES),
+                new Card(7, Suit.SPADES),
+                new Card(10, Suit.DIAMONDS),
+                new Card(11, Suit.CLUBS)
         );
         String result = evaluator.evaluate(cardList);
         assertThat(result, is("TRIPLE"));
