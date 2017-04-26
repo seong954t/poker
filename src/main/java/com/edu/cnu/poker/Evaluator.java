@@ -8,32 +8,36 @@ import java.util.Map;
  * Created by cse on 2017-04-17.
  */
 public class Evaluator {
-    public String evaluate(List<Card> cardList) {
-        Map<Suit, Integer> tempMap = new HashMap<Suit, Integer>();
-
-        for (Card card : cardList) {
-            if (tempMap.containsKey(card.getSuit())) {
-                Integer count = tempMap.get(card.getSuit());
-                count = new Integer(count.intValue() + 1);
-                tempMap.put(card.getSuit(), count);
-            } else {
-                tempMap.put(card.getSuit(), new Integer(1));
-            }
-        }
-
-        for (Suit key : tempMap.keySet()) {
-            if (tempMap.get(key) == 5) {
-                return "FLUSH";
-            }
-        }
-
-        if (checkfourcard(cardList)) {
+	public String evaluate(List<Card> cardList) {
+    if (checkfourcard(cardList)) {
             return "FOURCARD";
-        }
-        return "NOTHING";
     }
+		else if (FLUSH(cardList)) {
+			return "FLUSH";
+		} 
+    else if (STRAIGHT(cardList)) {
+			if (cardList.get(0).getRank() == 1) {
+				return "BACKSTRAIGHT";
+			}
+			return "STRAIGHT";
+		}
+		return "NOTHING";
+	}
 
-    public boolean checkfourcard(List<Card> cardList) {
+	public boolean STRAIGHT(List<Card> cardList) {
+		return 4 == cardList.get(4).getRank() - cardList.get(0).getRank();
+	}
+
+	public boolean FLUSH(List<Card> cardList) {
+		Suit suit = cardList.get(0).getSuit();
+		for (Card card : cardList) {
+			if (suit != card.getSuit()) {
+				return false;
+			}
+		}
+		return true;
+	}
+  public boolean checkfourcard(List<Card> cardList) {
         Map<Integer, Integer> numMap = new HashMap<Integer, Integer>();
         for (Card card : cardList) {
             if(numMap.containsKey(card.getRank())){
