@@ -53,8 +53,11 @@ public class Evaluator {
         return false;
     }
 
-    
+    public boolean checkTwopair(List<Card> cardList) {
 
+
+        return false;
+    }
 
 }
 

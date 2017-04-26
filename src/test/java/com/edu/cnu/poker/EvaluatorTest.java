@@ -41,4 +41,18 @@ public class EvaluatorTest {
         assertThat(result, is(true));
     }
 
+    @Test
+    public void 같은_숫자_2장이_2쌍이면_투페어다() {
+        Evaluator evaluator = new Evaluator();
+        List<Card> cardList = Arrays.asList(
+                new Card(2,Suit.CLUBS),
+                new Card(2,Suit.HEARTS),
+                new Card(3,Suit.DIAMONDS),
+                new Card(4,Suit.SPADES),
+                new Card(3,Suit.SPADES)
+        );
+        boolean result = evaluator.checkTwopair(cardList);
+        assertThat(result, is(true));
+    }
+
 }
