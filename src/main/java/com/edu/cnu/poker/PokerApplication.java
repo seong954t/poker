@@ -12,6 +12,7 @@ package com.edu.cnu.poker;
 public class PokerApplication {
 
     public static void main(String[] args) {
-        System.out.println("Hello Poker");
+        SinglePlay play = new SinglePlay();
+        play.init();
     }
 }
