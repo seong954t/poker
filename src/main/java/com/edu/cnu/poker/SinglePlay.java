@@ -72,10 +72,10 @@ public class SinglePlay {
                     batting = input.nextInt();
                 } while (coin < batting);
                 System.out.println("------------------------------------------");
-                if (ranking.value(evaluator.evaluate(player_Deck)) > ranking.value(evaluator.evaluate(computer_Deck))) {
+                if (ranking.value(evaluator.evaluate(player_Deck)) < ranking.value(evaluator.evaluate(computer_Deck))) {
                     System.out.println("패배");
                     coin -= batting;
-                } else if (ranking.value(evaluator.evaluate(player_Deck)) < ranking
+                } else if (ranking.value(evaluator.evaluate(player_Deck)) > ranking
                         .value(evaluator.evaluate(computer_Deck))) {
                     System.out.println("승");
                     coin += batting;
