@@ -19,14 +19,6 @@ public class Card implements Comparable<Card>{
         }
     }
 
-    public Suit getSuit() {
-        return suit;
-    }
-
-    public Integer getRank() {
-        return rank;
-    }
-
     public int compareTo(Card o) {
         return this.getRank() - o.getRank();
     }
